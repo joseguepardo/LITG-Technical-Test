@@ -5,11 +5,9 @@
 [Bb]uilds/
 [Ll]ogs/
 
-# Uncomment this line if you wish to ignore the asset store tools plugin
-# [Aa]ssets/AssetStoreTools*
-
-# Visual Studio cache directory
-.vs/
+# Handy editor tools.
+[Aa]ssets/Plugins/Infinity Code/*
+[Aa]ssets/Plugins/Infinity Code.meta
 
 # Gradle cache directory
 .gradle/
