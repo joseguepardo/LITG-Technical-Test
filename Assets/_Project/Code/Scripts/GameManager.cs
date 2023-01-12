@@ -7,11 +7,17 @@ namespace LifeIsTheGame.TechnicalTest
 {
     public class GameManager : Singleton<GameManager>
     {
-        public IPlayer Player { get; private set; }
+        public IPlayer player { get; private set; }
+        public IInputActions inputActions { get; private set; }
 
         public void SetPlayer(IPlayer player)
         {
-            Player = player;
+            this.player = player;
+        }
+
+        public void SetInputActions(IInputActions inputActions)
+        {
+            this.inputActions = inputActions;
         }
     }
 }

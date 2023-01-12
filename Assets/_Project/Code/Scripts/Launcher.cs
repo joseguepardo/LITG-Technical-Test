@@ -21,7 +21,7 @@ namespace LifeIsTheGame.TechnicalTest
             SceneManager.LoadScene(1);
         }
 
-        private bool CoreComponentsReady()
+        private static bool CoreComponentsReady()
         {
             return GameManager.instance != null;
         }
