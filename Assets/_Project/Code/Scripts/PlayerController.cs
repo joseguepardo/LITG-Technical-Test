@@ -26,7 +26,6 @@ namespace LifeIsTheGame.TechnicalTest
         private void Start()
         {
             InitializeVariables();
-            SubscribeToInputActions();
         }
 
         private void InitializeVariables()
@@ -34,11 +33,6 @@ namespace LifeIsTheGame.TechnicalTest
             _inputActions = GameManager.instance.inputActions;
             _cinemachinePov = virtualCamera.GetCinemachineComponent<CinemachinePOV>();
             _cameraT = Camera.main.transform;
-        }
-
-        private void SubscribeToInputActions()
-        {
-            _inputActions.SubscribeToEventOnMove(UpdateMovement);
         }
 
         private void UpdateMovement(Vector2 movement)
@@ -65,9 +59,20 @@ namespace LifeIsTheGame.TechnicalTest
             UnsubscribeToInputActions();
         }
 
+        private void SubscribeToInputActions()
+        {
+            _inputActions.SubscribeToEventOnMove(UpdateMovement);
+        }
+
         private void UnsubscribeToInputActions()
         {
             _inputActions?.UnsubscribeFromEventOnMove(UpdateMovement);
+        }
+
+        public void EnableController(bool enable)
+        {
+            if (enable) SubscribeToInputActions();
+            else UnsubscribeToInputActions();
         }
     }
 }

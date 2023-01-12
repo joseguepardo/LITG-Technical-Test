@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9168848801435937234}
   - component: {fileID: 9168848801435937235}
   m_Layer: 5
-  m_Name: Frame_TableFrame07_White3
+  m_Name: Pattern - Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 9168848801643038669}
   - component: {fileID: 9168848801643038666}
   m_Layer: 5
-  m_Name: Frame_TableFrame07_White4_Mask
+  m_Name: BG - Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 9168848801768474796}
   - component: {fileID: 9168848801768474797}
   m_Layer: 5
-  m_Name: Frame_TableFrame07_White2
+  m_Name: Frame - Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -487,7 +487,7 @@ GameObject:
   - component: {fileID: 9168848802708396243}
   - component: {fileID: 9168848802708396240}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Text - TMP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -622,7 +622,7 @@ GameObject:
   - component: {fileID: 9168848802785644275}
   - component: {fileID: 9168848802785644272}
   m_Layer: 5
-  m_Name: Btn_TextButton_Square01_Green
+  m_Name: Select - Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -742,7 +742,7 @@ GameObject:
   - component: {fileID: 9168848803221579393}
   - component: {fileID: 9168848803221579422}
   m_Layer: 5
-  m_Name: Frame_TableFrame07_White
+  m_Name: Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -819,7 +819,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4566583404437608360, guid: 95020a2abd23544438fb5c09aec7a51f, type: 3}
       propertyPath: m_Name
-      value: Btn_TextButton_Square01_Sky
+      value: Animation 1 - Button
       objectReference: {fileID: 0}
     - target: {fileID: 4566583404437608361, guid: 95020a2abd23544438fb5c09aec7a51f, type: 3}
       propertyPath: m_Pivot.x
@@ -921,7 +921,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4566583404437608360, guid: 95020a2abd23544438fb5c09aec7a51f, type: 3}
       propertyPath: m_Name
-      value: Btn_TextButton_Square01_Sky (1)
+      value: Animation 2 - Button
       objectReference: {fileID: 0}
     - target: {fileID: 4566583404437608361, guid: 95020a2abd23544438fb5c09aec7a51f, type: 3}
       propertyPath: m_Pivot.x
@@ -1027,7 +1027,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4566583404437608360, guid: 95020a2abd23544438fb5c09aec7a51f, type: 3}
       propertyPath: m_Name
-      value: Btn_TextButton_Square01_Sky (2)
+      value: Animation 3 - Button
       objectReference: {fileID: 0}
     - target: {fileID: 4566583404437608361, guid: 95020a2abd23544438fb5c09aec7a51f, type: 3}
       propertyPath: m_Pivot.x

@@ -349,6 +349,7 @@ GameObject:
   - component: {fileID: 4362541889724012791}
   - component: {fileID: 4362541889724012786}
   - component: {fileID: 4362541889724012784}
+  - component: {fileID: 8493766681966840290}
   - component: {fileID: 4362541889724012790}
   m_Layer: 0
   m_Name: Player
@@ -390,6 +391,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerAnimatorComponent: {fileID: 4362541889724012786}
   playerControllerComponent: {fileID: 4362541889724012784}
+  playerCameraControllerComponent: {fileID: 8493766681966840290}
 --- !u!114 &4362541889724012786
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -418,6 +420,20 @@ MonoBehaviour:
   controller: {fileID: 4362541889724012790}
   virtualCamera: {fileID: 4362541890343240221}
   playerControllerSettings: {fileID: 11400000, guid: 50e066ed63cee654bae5a0eb2affe5b8, type: 2}
+--- !u!114 &8493766681966840290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4362541889724012787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d5071c884df5494c89e0c46cc111123, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fpsCamera: {fileID: 4362541890343240221}
+  selectionCamera: {fileID: 5925225229172903364}
 --- !u!143 &4362541889724012790
 CharacterController:
   m_ObjectHideFlags: 0
@@ -544,7 +560,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9220088075273973824}
-  m_LocalRotation: {x: 0.0053772726, y: 0.9689664, z: -0.24622631, w: 0.021161003}
+  m_LocalRotation: {x: 0.0053772805, y: 0.9689664, z: -0.24622633, w: 0.021161035}
   m_LocalPosition: {x: -0.59005666, y: 2.0888138, z: 1.8387203}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -568,7 +584,7 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: 9
+  m_Priority: 11
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 8302613351905596669}
   m_Follow: {fileID: 4362541889558790022}

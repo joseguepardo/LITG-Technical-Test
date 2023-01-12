@@ -4,5 +4,6 @@ namespace LifeIsTheGame.TechnicalTest
     {
         IPlayerAnimator playerAnimator { get; }
         IPlayerController playerController { get; }
+        IPlayerCameraController playerCameraController { get; }
     }
 }

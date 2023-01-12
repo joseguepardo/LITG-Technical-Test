@@ -9,10 +9,13 @@ namespace LifeIsTheGame.TechnicalTest
     {
         public IPlayerAnimator playerAnimator => playerAnimatorComponent;
         public IPlayerController playerController => playerControllerComponent;
+        public IPlayerCameraController playerCameraController => playerCameraControllerComponent;
         [SerializeField]
         private PlayerAnimator playerAnimatorComponent;
         [SerializeField]
         private PlayerController playerControllerComponent;
+        [SerializeField]
+        private PlayerCameraController playerCameraControllerComponent;
 
         private void Awake()
         {
