@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public interface IPlayerAnimator
+namespace LifeIsTheGame.TechnicalTest
 {
-    void SetAnimation(PlayerAnimatorManager.AnimationState animationState);
+    public interface IPlayerAnimator
+    {
+        void SetAnimation(PlayerAnimator.AnimationState animationState);
+    }
 }

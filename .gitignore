@@ -8,6 +8,7 @@
 # Handy editor tools.
 [Aa]ssets/Plugins/Infinity Code/*
 [Aa]ssets/Plugins/Infinity Code.meta
+[Aa]ssets/ConsolePro/*
 
 # Gradle cache directory
 .gradle/
