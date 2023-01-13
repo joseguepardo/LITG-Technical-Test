@@ -8,11 +8,12 @@ namespace LifeIsTheGame.TechnicalTest
     public abstract class Weapon : MonoBehaviour, IWeapon
     {
         [SerializeField]
-        private WeaponSettings weaponSettings;
+        [InlineEditor]
+        protected WeaponSettings weaponSettings;
         [SerializeField]
-        private Projectile projectilePrefab;
+        protected Projectile projectilePrefab;
         [SerializeField]
-        private Transform firePointT;
+        protected Transform firePointT;
         [SerializeField]
         protected GameObject interactPopUpGO;
         [SerializeField]
@@ -33,10 +34,13 @@ namespace LifeIsTheGame.TechnicalTest
                 return;
 
             FireProjectile();
+            PlayFiringFeedback();
             _lastFireTime = Time.time;
         }
 
-        protected virtual void FireProjectile()
+        protected abstract void FireProjectile();
+
+        protected virtual void PlayFiringFeedback()
         {
         }
 

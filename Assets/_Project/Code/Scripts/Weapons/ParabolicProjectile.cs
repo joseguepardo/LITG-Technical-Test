@@ -3,15 +3,24 @@ using System.Collections.Generic;
 using LifeIsTheGame.TechnicalTest;
 using UnityEngine;
 
-public class ParabolicProjectile : Projectile
+namespace LifeIsTheGame.TechnicalTest
 {
-    protected override void PlayBasicVFX()
+    public class ParabolicProjectile : Projectile
     {
-        throw new System.NotImplementedException();
-    }
+        protected override void PlayBasicVFX()
+        {
+            throw new System.NotImplementedException();
+        }
 
-    public override void OnCollision()
-    {
-        throw new System.NotImplementedException();
+        protected override void OnCollision()
+        {
+            StartCoroutine(Destroy());
+        }
+
+        private IEnumerator Destroy()
+        {
+            yield return new WaitForSeconds(2);
+            Destroy(gameObject);
+        }
     }
 }

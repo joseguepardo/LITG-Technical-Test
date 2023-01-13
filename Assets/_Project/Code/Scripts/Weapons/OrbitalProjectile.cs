@@ -130,7 +130,7 @@ namespace LifeIsTheGame.TechnicalTest
             throw new NotImplementedException();
         }
 
-        public override void OnCollision()
+        protected override void OnCollision()
         {
             throw new NotImplementedException();
         }

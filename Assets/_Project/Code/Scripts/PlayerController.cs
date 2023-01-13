@@ -131,6 +131,18 @@ namespace LifeIsTheGame.TechnicalTest
             _weaponRotationTween = weaponT.DOLocalRotate(Vector3.zero, 0.2f);
         }
 
+        private void FireWeapon()
+        {
+            if (_weaponPicked == null) return;
+
+            _weaponPicked.Fire();
+            PlayFireFeedback();
+        }
+
+        private void PlayFireFeedback()
+        {
+        }
+
         private void OnDestroy()
         {
             UnsubscribeToInputActions();
@@ -141,6 +153,7 @@ namespace LifeIsTheGame.TechnicalTest
             _inputActions.SubscribeToEventOnMove(UpdateMovement);
             _inputActions.SubscribeToEventOnLook(UpdatePlayerLookingForInteraction);
             _inputActions.SubscribeToEventOnInteract(UpdatePlayerInteraction);
+            _inputActions.SubscribeToEventOnFire(FireWeapon);
         }
 
         private void UnsubscribeToInputActions()
@@ -148,6 +161,7 @@ namespace LifeIsTheGame.TechnicalTest
             _inputActions?.UnsubscribeFromEventOnMove(UpdateMovement);
             _inputActions?.UnsubscribeFromEventOnLook(UpdatePlayerLookingForInteraction);
             _inputActions?.UnsubscribeFromEventOnInteract(UpdatePlayerInteraction);
+            _inputActions?.UnsubscribeFromEventOnFire(FireWeapon);
         }
 
         public void EnableController(bool enable)

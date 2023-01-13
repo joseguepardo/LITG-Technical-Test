@@ -5,8 +5,7 @@ namespace LifeIsTheGame.TechnicalTest
 {
     public abstract class Projectile : MonoBehaviour
     {
-        [SerializeField]
-        private Rigidbody rb;
+        public Rigidbody rb;
 
         private bool _collided;
 
@@ -24,7 +23,7 @@ namespace LifeIsTheGame.TechnicalTest
             _collided = true;
         }
 
-        public abstract void OnCollision();
+        protected abstract void OnCollision();
 
         public virtual void Fire(Vector3 velocity)
         {

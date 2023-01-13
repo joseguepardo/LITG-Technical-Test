@@ -6,5 +6,9 @@ namespace LifeIsTheGame.TechnicalTest
 {
     public class OrbitalWeapon : Weapon
     {
+        protected override void FireProjectile()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
