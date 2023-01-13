@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
+using DG.Tweening;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Windows.Speech;
@@ -13,20 +14,29 @@ namespace LifeIsTheGame.TechnicalTest
     {
         private IInputActions _inputActions;
 
+        [BoxGroup("Settings")]
         [SerializeField]
         private CharacterController controller;
+        [BoxGroup("Settings")]
         [SerializeField]
         private CinemachineVirtualCamera virtualCamera;
         private CinemachinePOV _cinemachinePov;
         private Transform _cameraT;
-        [SerializeField]
-        private LayerMask interactableLayerMask;
 
+        [BoxGroup("Settings")]
         [SerializeField]
         [InlineEditor]
         private PlayerControllerSettingsSO playerControllerSettings;
 
+        [BoxGroup("Settings/Weapons")]
+        [SerializeField]
+        private LayerMask interactableLayerMask;
+        [BoxGroup("Settings/Weapons")]
+        [SerializeField]
+        private Transform weaponHolderT;
+
         private IWeapon _weaponPicked, _weaponToPick;
+        private Tween _weaponMoveTween, _weaponRotationTween;
 
         private void Start()
         {
@@ -84,16 +94,41 @@ namespace LifeIsTheGame.TechnicalTest
 
         private void UpdatePlayerInteraction()
         {
-            if (_weaponToPick == null) return;
-
-            _weaponToPick.PickUp();
-            PickUpWeapon(_weaponPicked);
+            // Debug.Log($"#PlayerController# Interacting");
+            if ((_weaponMoveTween != null && _weaponMoveTween.IsPlaying()) ||
+                (_weaponRotationTween != null && _weaponRotationTween.IsPlaying()))
+                return;
+            DropWeapon();
+            PickUpWeapon();
         }
 
-        private void PickUpWeapon(IWeapon weaponToPick)
+        private void DropWeapon()
         {
-            _weaponPicked = weaponToPick;
+            if (_weaponPicked == null) return;
+
+            // Debug.Log($"#PlayerController# Dropping");
+            _weaponPicked.Drop();
+            _weaponPicked.weaponTransform.SetParent(null);
+            _weaponPicked = null;
+        }
+
+        private void PickUpWeapon()
+        {
+            if (_weaponToPick == null) return;
+
+            // Debug.Log($"#PlayerController# Picking up");
+            _weaponToPick.PickUp();
+            _weaponPicked = _weaponToPick;
             _weaponToPick = null;
+
+            weaponHolderT.SetParent(Camera.main.transform);
+            weaponHolderT.localPosition = new Vector3(0.382f, -0.25f, 0.378f);
+            weaponHolderT.localEulerAngles = Vector3.zero;
+
+            var weaponT = _weaponPicked.weaponTransform;
+            weaponT.SetParent(weaponHolderT);
+            _weaponMoveTween = weaponT.DOLocalMove(Vector3.zero, 0.2f);
+            _weaponRotationTween = weaponT.DOLocalRotate(Vector3.zero, 0.2f);
         }
 
         private void OnDestroy()
@@ -117,8 +152,15 @@ namespace LifeIsTheGame.TechnicalTest
 
         public void EnableController(bool enable)
         {
-            if (enable) SubscribeToInputActions();
-            else UnsubscribeToInputActions();
+            if (enable)
+            {
+                SubscribeToInputActions();
+            }
+            else
+            {
+                UnsubscribeToInputActions();
+                DropWeapon();
+            }
         }
     }
 }

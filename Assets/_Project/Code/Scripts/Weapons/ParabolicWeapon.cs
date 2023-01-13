@@ -4,12 +4,14 @@ namespace LifeIsTheGame.TechnicalTest
     {
         public override void PickUp()
         {
-            throw new System.NotImplementedException();
+            rb.isKinematic = true;
+            rb.detectCollisions = false;
         }
 
         public override void Drop()
         {
-            throw new System.NotImplementedException();
+            rb.isKinematic = false;
+            rb.detectCollisions = true;
         }
     }
 }

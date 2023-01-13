@@ -291,6 +291,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 6920900596988250680, guid: 970f5bb5e1d2fb7428e662553d61cef8, type: 3}
   firePointT: {fileID: 505319198889126519}
   interactPopUpGO: {fileID: 8660941067727289572}
+  rb: {fileID: 8363392685550659877}
 --- !u!54 &8363392685550659877
 Rigidbody:
   m_ObjectHideFlags: 0

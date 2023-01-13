@@ -14,7 +14,9 @@ namespace LifeIsTheGame.TechnicalTest
         [SerializeField]
         private Transform firePointT;
         [SerializeField]
-        private GameObject interactPopUpGO;
+        protected GameObject interactPopUpGO;
+        [SerializeField]
+        protected Rigidbody rb;
 
         private float _lastFireTime = 0;
 
