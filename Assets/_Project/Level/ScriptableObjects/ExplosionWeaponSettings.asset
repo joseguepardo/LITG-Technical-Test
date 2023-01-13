@@ -10,8 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2e8d5b4e560448bfb21b61b0ffd2fa1d, type: 3}
-  m_Name: TimeWrapWeaponSettings
+  m_Name: ExplosionWeaponSettings
   m_EditorClassIdentifier: 
   fireRate: 5
   firePower: 20
-  timeModifier: 0.5
+  range: 15
+  force: 35
+  explosionForce: 20
+  explosionsDelay: 2
+  explosionsDuration: 2
+  finalProjectileScale: 1.5
+  finalProjectileHeight: 3
+  scalingAnimationDuration: 0.5
+  heightAnimationDuration: 2
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 128

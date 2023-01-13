@@ -17,7 +17,7 @@ MonoBehaviour:
   range: 10
   force: 20
   offset: 0.2
-  effectDuration: 5
+  effectDuration: 3.5
   finalProjectileScale: 1
   finalProjectileHeight: 3
   scalingAnimationDuration: 0.5

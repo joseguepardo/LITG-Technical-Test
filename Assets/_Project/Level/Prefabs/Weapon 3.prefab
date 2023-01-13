@@ -78,7 +78,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponSettings: {fileID: 11400000, guid: f195ada889a55284a8b521fe3fe4891f, type: 2}
-  projectilePrefab: {fileID: 6497974312336802190, guid: c6481dc2cd6c708458c651994d2c7fc4, type: 3}
+  projectilePrefab: {fileID: 7049538538752023111, guid: c6481dc2cd6c708458c651994d2c7fc4, type: 3}
   firePointT: {fileID: 1139640193249606990}
   interactPopUpGO: {fileID: 9116558982862771940}
   rb: {fileID: 1666786857338670940}
