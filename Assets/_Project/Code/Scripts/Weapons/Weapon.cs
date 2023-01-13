@@ -19,7 +19,7 @@ namespace LifeIsTheGame.TechnicalTest
         [SerializeField]
         protected Rigidbody rb;
 
-        private float _lastFireTime = 0;
+        protected float _lastFireTime = 0;
 
         public Transform weaponTransform => transform;
 
@@ -38,7 +38,12 @@ namespace LifeIsTheGame.TechnicalTest
             _lastFireTime = Time.time;
         }
 
-        protected abstract void FireProjectile();
+        protected virtual void FireProjectile()
+        {
+            var projectile = Instantiate(projectilePrefab, firePointT.position, Quaternion.identity)
+                .GetComponent<Projectile>();
+            projectile.rb.velocity = firePointT.forward * weaponSettings.firePower;
+        }
 
         protected virtual void PlayFiringFeedback()
         {

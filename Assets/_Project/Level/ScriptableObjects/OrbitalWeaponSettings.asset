@@ -14,9 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireRate: 5
   firePower: 20
-  range: 15
+  range: 10
   force: 20
   offset: 0.2
+  effectDuration: 5
+  finalProjectileScale: 1
+  finalProjectileHeight: 3
+  scalingAnimationDuration: 0.5
+  heightAnimationDuration: 2
   layerMask:
     serializedVersion: 2
     m_Bits: 128

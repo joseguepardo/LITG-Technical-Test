@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -23,7 +24,7 @@ namespace LifeIsTheGame.TechnicalTest
         private List<Vector3> _forceVectors = new List<Vector3>();
 
         [Button(ButtonSizes.Large)]
-        private void ActivateToggle()
+        private void ActivateOrbitEffectToggle()
         {
             if (_isActive)
             {
@@ -132,7 +133,23 @@ namespace LifeIsTheGame.TechnicalTest
 
         protected override void OnCollision()
         {
-            throw new NotImplementedException();
+            StartCoroutine(OrbitEffectCo());
+        }
+
+        private IEnumerator OrbitEffectCo()
+        {
+            rb.velocity = Vector3.zero;
+            rb.isKinematic = true;
+            rb.detectCollisions = false;
+            transform.DOLocalMove(transform.position + new Vector3(0, orbitalWeaponSettings.finalProjectileHeight, 0),
+                orbitalWeaponSettings.heightAnimationDuration).SetEase(Ease.OutQuint);
+            transform.DOScale(orbitalWeaponSettings.finalProjectileScale, orbitalWeaponSettings.scalingAnimationDuration)
+                .SetEase(Ease.OutQuint);
+
+            ActivateOrbitEffectToggle();
+            yield return new WaitForSeconds(orbitalWeaponSettings.effectDuration);
+            ActivateOrbitEffectToggle();
+            transform.DOScale(Vector3.zero, 0.2f).SetEase(Ease.OutBack).OnComplete(() => Destroy(gameObject));
         }
     }
 }

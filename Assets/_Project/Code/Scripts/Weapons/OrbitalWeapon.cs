@@ -6,9 +6,16 @@ namespace LifeIsTheGame.TechnicalTest
 {
     public class OrbitalWeapon : Weapon
     {
-        protected override void FireProjectile()
+        private Projectile _projectile;
+
+        public override void Fire()
         {
-            throw new System.NotImplementedException();
+            if (Time.time <= _lastFireTime + weaponSettings.fireDelay || _projectile != null)
+                return;
+
+            FireProjectile();
+            PlayFiringFeedback();
+            _lastFireTime = Time.time;
         }
     }
 }
