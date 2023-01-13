@@ -292,8 +292,8 @@ MonoBehaviour:
     Value: 0
     m_SpeedMode: 0
     m_MaxSpeed: 150
-    m_AccelTime: 0.1
-    m_DecelTime: 0.1
+    m_AccelTime: 0.02
+    m_DecelTime: 0.02
     m_InputAxisName: Mouse Y
     m_InputAxisValue: 0
     m_InvertInput: 1
@@ -316,8 +316,8 @@ MonoBehaviour:
     Value: 0
     m_SpeedMode: 0
     m_MaxSpeed: 150
-    m_AccelTime: 0.1
-    m_DecelTime: 0.1
+    m_AccelTime: 0.02
+    m_DecelTime: 0.02
     m_InputAxisName: Mouse X
     m_InputAxisValue: 0
     m_InvertInput: 0
@@ -419,6 +419,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 4362541889724012790}
   virtualCamera: {fileID: 4362541890343240221}
+  interactableLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
   playerControllerSettings: {fileID: 11400000, guid: 50e066ed63cee654bae5a0eb2affe5b8, type: 2}
 --- !u!114 &8493766681966840290
 MonoBehaviour:

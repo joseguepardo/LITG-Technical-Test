@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Cinemachine;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Windows.Speech;
 
 namespace LifeIsTheGame.TechnicalTest
 {
@@ -18,10 +19,14 @@ namespace LifeIsTheGame.TechnicalTest
         private CinemachineVirtualCamera virtualCamera;
         private CinemachinePOV _cinemachinePov;
         private Transform _cameraT;
+        [SerializeField]
+        private LayerMask interactableLayerMask;
 
         [SerializeField]
         [InlineEditor]
         private PlayerControllerSettingsSO playerControllerSettings;
+
+        private IWeapon _weaponPicked, _weaponToPick;
 
         private void Start()
         {
@@ -54,6 +59,43 @@ namespace LifeIsTheGame.TechnicalTest
             _cinemachinePov.m_VerticalAxis.m_MaxSpeed = playerControllerSettings.cameraSpeed;
         }
 
+        private void UpdatePlayerLookingForInteraction(Vector2 delta)
+        {
+            var ray = new Ray(_cameraT.position, _cameraT.forward);
+            if (Physics.Raycast(ray, out var hit, playerControllerSettings.interactionDistance, interactableLayerMask))
+            {
+                var weapon = hit.collider.GetComponent<IWeapon>();
+                if (weapon != null)
+                {
+                    if (weapon != _weaponToPick)
+                    {
+                        _weaponToPick?.OnLookedAt(false);
+                        _weaponToPick = weapon;
+                        _weaponToPick.OnLookedAt(true);
+                    }
+                }
+            }
+            else
+            {
+                _weaponToPick?.OnLookedAt(false);
+                _weaponToPick = null;
+            }
+        }
+
+        private void UpdatePlayerInteraction()
+        {
+            if (_weaponToPick == null) return;
+
+            _weaponToPick.PickUp();
+            PickUpWeapon(_weaponPicked);
+        }
+
+        private void PickUpWeapon(IWeapon weaponToPick)
+        {
+            _weaponPicked = weaponToPick;
+            _weaponToPick = null;
+        }
+
         private void OnDestroy()
         {
             UnsubscribeToInputActions();
@@ -62,11 +104,15 @@ namespace LifeIsTheGame.TechnicalTest
         private void SubscribeToInputActions()
         {
             _inputActions.SubscribeToEventOnMove(UpdateMovement);
+            _inputActions.SubscribeToEventOnLook(UpdatePlayerLookingForInteraction);
+            _inputActions.SubscribeToEventOnInteract(UpdatePlayerInteraction);
         }
 
         private void UnsubscribeToInputActions()
         {
             _inputActions?.UnsubscribeFromEventOnMove(UpdateMovement);
+            _inputActions?.UnsubscribeFromEventOnLook(UpdatePlayerLookingForInteraction);
+            _inputActions?.UnsubscribeFromEventOnInteract(UpdatePlayerInteraction);
         }
 
         public void EnableController(bool enable)

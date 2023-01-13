@@ -6,20 +6,11 @@ using UnityEngine;
 
 namespace LifeIsTheGame.TechnicalTest
 {
-    public class GravitationalProjectile : MonoBehaviour
+    public class OrbitalProjectile : Projectile
     {
-        [BoxGroup("Settings")]
+        [InlineEditor]
         [SerializeField]
-        private float range;
-        [BoxGroup("Settings")]
-        [SerializeField]
-        private float force;
-        [BoxGroup("Settings")]
-        [SerializeField]
-        private LayerMask layerMask;
-        [BoxGroup("Settings")]
-        [SerializeField]
-        private float offset;
+        private OrbitalWeaponSettings orbitalWeaponSettings;
 
         [ShowInInspector]
         [ReadOnly]
@@ -49,7 +40,8 @@ namespace LifeIsTheGame.TechnicalTest
         private void InitializeRigidbodies()
         {
             var collidersInRange = new Collider[100];
-            var numberOfColliders = Physics.OverlapSphereNonAlloc(transform.position, range, collidersInRange, layerMask);
+            var numberOfColliders = Physics.OverlapSphereNonAlloc(transform.position, orbitalWeaponSettings.range,
+                collidersInRange, orbitalWeaponSettings.layerMask);
             for (var i = 0; i < numberOfColliders; i++)
             {
                 var rb = collidersInRange[i].GetComponent<Rigidbody>();
@@ -80,7 +72,7 @@ namespace LifeIsTheGame.TechnicalTest
             foreach (var rb in _rigidbodiesInRange)
             {
                 var direction = (transform.position - rb.position).normalized;
-                rb.AddForce(direction * force);
+                rb.AddForce(direction * orbitalWeaponSettings.force);
             }
         }
 
@@ -93,14 +85,15 @@ namespace LifeIsTheGame.TechnicalTest
                 var direction = (position - rb.position).normalized;
                 var forceDirection = Vector3.Cross(direction, Vector3.up);
 
-                var adjustedDirection = (position - (rb.position + (forceDirection * offset))).normalized;
+                var adjustedDirection = (position - (rb.position + (forceDirection * orbitalWeaponSettings.offset)))
+                    .normalized;
                 var adjustedForceDirection = Vector3.Cross(adjustedDirection, Vector3.up);
 
                 _forceVectors.Add(adjustedForceDirection);
                 // Orbital movement.
-                rb.velocity = adjustedForceDirection * force;
+                rb.velocity = adjustedForceDirection * orbitalWeaponSettings.force;
                 // Vertical movement.
-                rb.AddForce(new Vector3(0, direction.y, 0) * (force * 10));
+                rb.AddForce(new Vector3(0, direction.y, 0) * (orbitalWeaponSettings.force * 10));
             }
         }
 
@@ -115,10 +108,10 @@ namespace LifeIsTheGame.TechnicalTest
             var position = transform.position;
             var rangeColor = _isActive ? Color.green : Color.yellow;
             Gizmos.color = rangeColor;
-            Gizmos.DrawWireSphere(position, range);
+            Gizmos.DrawWireSphere(position, orbitalWeaponSettings.range);
             rangeColor.a = 0.2f;
             Gizmos.color = rangeColor;
-            Gizmos.DrawSphere(position, range);
+            Gizmos.DrawSphere(position, orbitalWeaponSettings.range);
         }
 
         private void DrawForceRays()
@@ -130,6 +123,16 @@ namespace LifeIsTheGame.TechnicalTest
             {
                 Gizmos.DrawRay(_rigidbodiesInRange[i].transform.position, _forceVectors[i]);
             }
+        }
+
+        protected override void PlayBasicVFX()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void OnCollision()
+        {
+            throw new NotImplementedException();
         }
     }
 }

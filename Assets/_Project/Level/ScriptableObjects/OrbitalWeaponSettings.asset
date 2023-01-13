@@ -9,9 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb352d60e465cd048aa217dc0905e08b, type: 3}
-  m_Name: PlayerControllerSettings
+  m_Script: {fileID: 11500000, guid: a269fdfed64a47bf8db795f867759040, type: 3}
+  m_Name: OrbitalWeaponSettings
   m_EditorClassIdentifier: 
-  playerSpeed: 5
-  cameraSpeed: 150
-  interactionDistance: 2.5
+  fireRate: 5
+  firePower: 20
+  range: 15
+  force: 20
+  offset: 0.2
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 128

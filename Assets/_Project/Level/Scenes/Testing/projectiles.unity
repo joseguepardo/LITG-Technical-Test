@@ -656,12 +656,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1339632e863701e4b8cd90da4d739119, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 15
-  force: 20
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 128
-  offset: 0.2
+  orbitalWeaponSettings: {fileID: 11400000, guid: 2f27aaa1c5e14fb4d91330db8f892054, type: 2}
 --- !u!23 &1925196527
 MeshRenderer:
   m_ObjectHideFlags: 0

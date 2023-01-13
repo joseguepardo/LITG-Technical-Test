@@ -9,5 +9,6 @@ namespace LifeIsTheGame.TechnicalTest
     {
         public float playerSpeed = 5f;
         public float cameraSpeed = 150f;
+        public float interactionDistance = 8f;
     }
 }
