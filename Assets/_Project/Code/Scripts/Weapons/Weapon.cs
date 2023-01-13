@@ -40,7 +40,16 @@ namespace LifeIsTheGame.TechnicalTest
         {
         }
 
-        public abstract void PickUp();
-        public abstract void Drop();
+        public virtual void PickUp()
+        {
+            rb.isKinematic = true;
+            rb.detectCollisions = false;
+        }
+
+        public virtual void Drop()
+        {
+            rb.isKinematic = false;
+            rb.detectCollisions = true;
+        }
     }
 }
